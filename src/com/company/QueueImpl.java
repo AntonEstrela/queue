@@ -1,10 +1,10 @@
 package com.company;
 
 public class QueueImpl<E> implements Queue<E>{
-    int Size = 0;
-    int maxSize;
-    E[] array;
-    public Queue<E>(int length){
+    private int Size = 0;
+    private int maxSize;
+    private E[] array;
+    public QueueImpl(int length){
         this.maxSize = length;
         array = (E[])new Object[maxSize];
     }
@@ -38,8 +38,8 @@ public class QueueImpl<E> implements Queue<E>{
         return Size == 0;
     }
     private void lShift(){
-        for(int i = 0; i < Size - 1; i++){
-            array[i] = array[i+1];
+        if (Size - 1 >= 0) {
+            System.arraycopy(array, 1, array, 0, Size - 1);
         }
     }
 }
